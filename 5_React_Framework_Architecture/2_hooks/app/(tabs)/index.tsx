@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import MapImage from "../../Workspace/MapImage";
+import MapImage from "../../../1_core_components/Workspace/zadanie_2/MapImage";
 
 const HomeScreen = () => {
     return (
