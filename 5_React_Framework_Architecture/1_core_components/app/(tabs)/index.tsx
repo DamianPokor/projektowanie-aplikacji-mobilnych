@@ -3,8 +3,8 @@ import { View, StyleSheet } from "react-native";
 import DateDisplay from "../../../1_core_components/Workspace/zadanie_1/DateDisplay";
 import MapImage from "../../../1_core_components/Workspace/zadanie_2/MapImage";
 import StyledPizzaText from "@/Workspace/zadanie_3/StyledText";
-import UserName from "../../../1_core_components/Workspace/zadanie_4/UserName";
-import UserSurname from "../../../1_core_components/Workspace/zadanie_4/UserSurname";
+import UserName from "@/Workspace/zadanie_5/UserName";
+import UserSurname from "@/Workspace/zadanie_5/UserSurname";
 
 const HomeScreen = () => {
     return (
