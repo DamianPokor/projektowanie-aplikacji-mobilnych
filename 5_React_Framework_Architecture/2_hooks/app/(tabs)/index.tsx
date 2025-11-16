@@ -1,17 +1,13 @@
-import { StyleSheet } from 'react-native';
-import HooksExamples from '@/components/HooksExamples';
-import { View } from '@/components/Themed';
+import React from "react";
+import { View } from "react-native";
+import MapImage from "../../Workspace/MapImage";
 
-export default function TabOneScreen() {
-  return (
-    <View style={styles.container}>
-      <HooksExamples />
-    </View>
-  );
-}
+const HomeScreen = () => {
+    return (
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <MapImage />
+        </View>
+    );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+export default HomeScreen;
