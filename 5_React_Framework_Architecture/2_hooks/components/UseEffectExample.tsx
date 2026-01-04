@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 
+//Dodałem useEffect z dependency array [currentQuestion] dzięki czemu kiedy zmienia się pytanie useEffect urachamia się, czyści poprzednia odpowiedź, kasuje tekst z inputu dzięki czemu użytkownik zawsze zaczyna z czystym okienkiem.
 const capitals = [
   {
     country: "France",
@@ -23,7 +24,10 @@ const UseEffectExample: React.FC = () => {
   const [time, setTime] = useState(0);
 
   // Reset error information when moving to next question
-
+  useEffect(() => {
+    setCorrectAnswer(null);
+    setInput("");
+  }, [currentQuestion]);
 
   // Timer effect
   useEffect(() => {
@@ -51,33 +55,33 @@ const UseEffectExample: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.question}>
-        The capital of {capitals[currentQuestion].country} is?
-      </Text>
-      
-      <TextInput
-        style={styles.input}
-        value={input}
-        onChangeText={setInput}
-        placeholder="Enter capital city..."
-        autoCapitalize="words"
-      />
-      
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.checkButton} onPress={checkAnswer}>
-          <Text style={styles.buttonText}>Check Answer</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.nextButton} onPress={nextQuestion}>
-          <Text style={styles.buttonText}>Next Question</Text>
-        </TouchableOpacity>
+      <View style={styles.container}>
+        <Text style={styles.question}>
+          The capital of {capitals[currentQuestion].country} is?
+        </Text>
+
+        <TextInput
+            style={styles.input}
+            value={input}
+            onChangeText={setInput}
+            placeholder="Enter capital city..."
+            autoCapitalize="words"
+        />
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.checkButton} onPress={checkAnswer}>
+            <Text style={styles.buttonText}>Check Answer</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.nextButton} onPress={nextQuestion}>
+            <Text style={styles.buttonText}>Next Question</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.feedback}>{getAnswerFeedback()}</Text>
+
+        <Text style={styles.timer}>Time: {time}s</Text>
       </View>
-      
-      <Text style={styles.feedback}>{getAnswerFeedback()}</Text>
-      
-      <Text style={styles.timer}>Time: {time}s</Text>
-    </View>
   );
 };
 
